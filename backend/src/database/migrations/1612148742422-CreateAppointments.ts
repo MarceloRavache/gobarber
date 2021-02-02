@@ -1,6 +1,6 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class CreateAppointments1612148742422 implements MigrationInterface {
+export default class CreateAppointments1612148742422 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
@@ -23,6 +23,16 @@ export class CreateAppointments1612148742422 implements MigrationInterface {
                         name: 'date',
                         type: 'timestamp with time zone',
                         isNullable: false,
+                    },
+                    {
+                        name: 'created_at',
+                        type: 'timestamp',
+                        default: 'now()',
+                    },
+                    {
+                        name: 'updated_at',
+                        type: 'timestamp',
+                        default: 'now()',
                     }
                 ]
             })
